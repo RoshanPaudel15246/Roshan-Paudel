@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Roshan Paudel | Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+
+  <header class="header">
+    <div class="nav-container">
+      <a href="#hero" class="logo">RP<span>.</span></a>
+      <nav class="nav-links" id="nav-links">
+        <a href="#about" class="nav-link">About</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <button id="theme-toggle" class="theme-btn" aria-label="Toggle theme"><i class="fa-solid fa-moon"></i></button>
+        <button id="menu-btn" class="menu-btn" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="hero" class="hero section">
+      <div class="container hero-content">
+        <span class="badge">Available for opportunities</span>
+        <h1>Hi, I'm <span class="highlight">Roshan Paudel</span></h1>
+        <p class="tagline">Systems, Network & Cloud Specialist | Web Developer</p>
+        <p class="bio-summary">Specializing in cloud infrastructure, virtualization, enterprise systems, and full-stack development.</p>
+        <div class="cta-group">
+          <a href="#projects" class="btn btn-primary">View Projects</a>
+          <a href="#contact" class="btn btn-outline">Let's Talk</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section bg-alt">
+      <div class="container">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-grid">
+          <div class="about-card">
+            <i class="fa-solid fa-server feature-icon"></i>
+            <h3>Systems & Networking</h3>
+            <p>Active Directory domain administration, Hyper-V virtualization, and Cisco network routing.</p>
+          </div>
+          <div class="about-card">
+            <i class="fa-solid fa-cloud feature-icon"></i>
+            <h3>Cloud & Infrastructure</h3>
+            <p>AWS VPC design, load balancing, CloudWatch monitoring, and automated security scanning.</p>
+          </div>
+          <div class="about-card">
+            <i class="fa-solid fa-code feature-icon"></i>
+            <h3>Web Development</h3>
+            <p>Building dynamic, responsive interfaces with clean DOM manipulation and API database workflows.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="section">
+      <div class="container">
+        <h2 class="section-title">Technical Expertise</h2>
+        <div class="skills-grid" id="skills-container"></div>
+      </div>
+    </section>
+
+    <section id="projects" class="section bg-alt">
+      <div class="container">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="filter-controls">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="cloud">Cloud & Infrastructure</button>
+          <button class="filter-btn" data-filter="web">Web Applications</button>
+          <button class="filter-btn" data-filter="systems">Systems & Scripts</button>
+        </div>
+        <div class="projects-grid" id="projects-container"></div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="container contact-container">
+        <h2 class="section-title">Get In Touch</h2>
+        <p class="contact-desc">Send me a message and it will be stored directly in my secure database.</p>
+        
+        <form class="contact-form" id="contact-form">
+          <!-- Honeypot anti-spam field (hidden from real users) -->
+          <input type="text" id="honeypot" style="display:none" tabindex="-1" autocomplete="off" />
+
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" required placeholder="Jane Doe" maxlength="100" />
+          </div>
+          <div class="form-group">
+            <label for="email">Your Email</label>
+            <input type="email" id="email" required placeholder="jane@example.com" maxlength="255" />
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" rows="5" required placeholder="Write your message..." maxlength="2000"></textarea>
+          </div>
+          <button type="submit" id="submit-btn" class="btn btn-primary btn-block">Send Message</button>
+          <p id="form-status" class="form-status"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>&copy; <span id="year"></span> Roshan Paudel. All rights reserved.</p>
+      <div class="social-links">
+        <a href="https://github.com" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+        <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="mailto:contact@paudel-roshan.com.np" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Supabase Client SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="app.js"></script>
+</body>
+</html>
