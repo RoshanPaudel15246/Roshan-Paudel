@@ -1,7 +1,6 @@
-// --- 1. SUPABASE CONFIGURATION ---
-const SUPABASE_URL = "https://YOUR_PROJECT_ID.supabase.co";
-const SUPABASE_ANON_KEY = "YOUR_SUPABASE_ANON_KEY";
-
+// Replace these with your actual Supabase URL and anon key
+const SUPABASE_URL = "https://your-actual-project-id.supabase.co";
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...";
 const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 // --- 2. DATASETS ---
