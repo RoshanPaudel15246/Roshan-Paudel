@@ -1,131 +1,391 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Roshan Paudel | Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <title>Resume | Roshan Paudel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <style>
+    :root {
+      --sidebar-navy: #1d3557;
+      --sidebar-header-bg: #747d88;
+      --navy-dark: #0f2b48;
+      --text-dark: #222222;
+      --text-muted: #555555;
+      --accent-orange: #d97706;
+      --bg-light: #e5e9ec;
+      --card-white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', Arial, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-light);
+      display: flex;
+      justify-content: center;
+      padding: 2rem 1rem;
+    }
+
+    /* Resume Container (A4 Proportions) */
+    .resume-container {
+      width: 100%;
+      max-width: 850px;
+      background: var(--card-white);
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+      display: grid;
+      grid-template-columns: 35% 65%;
+      min-height: 1100px;
+    }
+
+    /* ================= LEFT SIDEBAR ================= */
+    .sidebar {
+      background-color: var(--sidebar-navy);
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sidebar-top {
+      background-color: var(--sidebar-header-bg);
+      padding: 2rem 1.25rem 0;
+      text-align: center;
+    }
+
+    .sidebar-name {
+      font-size: 1.45rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #ffffff;
+      margin-bottom: 1.5rem;
+    }
+
+    .profile-arch {
+      width: 140px;
+      height: 150px;
+      margin: 0 auto;
+      background: var(--sidebar-navy);
+      border-top-left-radius: 70px;
+      border-top-right-radius: 70px;
+      padding-top: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+    }
+
+    .profile-img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #ffffff;
+      background: #f1f5f9;
+    }
+
+    .sidebar-content {
+      padding: 1.5rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .sidebar-section h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.35rem;
+      border-bottom: 2px solid var(--accent-orange);
+      letter-spacing: 0.5px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.85rem;
+      margin-bottom: 0.65rem;
+      word-break: break-word;
+      line-height: 1.3;
+    }
+
+    .contact-item i {
+      font-size: 0.95rem;
+      width: 18px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .contact-item a {
+      color: #ffffff;
+      text-decoration: none;
+    }
+
+    .sidebar-list {
+      list-style-type: disc;
+      padding-left: 1.2rem;
+      font-size: 0.85rem;
+      line-height: 1.6;
+    }
+
+    /* ================= RIGHT CONTENT ================= */
+    .main-content {
+      background-color: #ffffff;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .profile-summary-header {
+      background-color: var(--navy-dark);
+      color: #ffffff;
+      padding: 1.75rem 1.75rem;
+      font-size: 0.82rem;
+      line-height: 1.5;
+      text-align: justify;
+    }
+
+    .sections-wrapper {
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .section-banner {
+      display: inline-block;
+      color: #ffffff;
+      font-size: 1rem;
+      font-weight: 700;
+      padding: 0.4rem 1.25rem;
+      border-radius: 2px;
+      clip-path: polygon(0 0, 92% 0, 100% 100%, 0 100%);
+      margin-bottom: 1.25rem;
+      text-transform: capitalize;
+    }
+
+    .banner-grey {
+      background-color: var(--sidebar-header-bg);
+      width: 140px;
+    }
+
+    .banner-navy {
+      background-color: var(--navy-dark);
+      width: 140px;
+    }
+
+    .job-block {
+      margin-bottom: 1.25rem;
+    }
+
+    .job-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+
+    .job-company {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-dark);
+    }
+
+    .job-location, .job-date {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .job-bullets {
+      margin-top: 0.5rem;
+      padding-left: 1.25rem;
+      font-size: 0.8rem;
+      line-height: 1.5;
+      color: var(--text-dark);
+    }
+
+    .edu-block {
+      margin-bottom: 1rem;
+    }
+
+    .edu-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+
+    .edu-bullets {
+      list-style-type: disc;
+      padding-left: 1.2rem;
+    }
+
+    .edu-bullets li {
+      font-size: 0.8rem;
+      color: var(--text-dark);
+      line-height: 1.4;
+      margin-bottom: 0.75rem;
+    }
+
+    .edu-bullets .sub-detail {
+      color: var(--text-muted);
+      font-size: 0.75rem;
+    }
+
+    /* Print / Responsive Rules */
+    @media (max-width: 768px) {
+      .resume-container {
+        grid-template-columns: 1fr;
+      }
+      .sidebar-top {
+        padding-top: 1.5rem;
+      }
+    }
+  </style>
 </head>
 <body>
 
-  <header class="header">
-    <div class="nav-container">
-      <a href="#hero" class="logo">RP<span>.</span></a>
-      <nav class="nav-links" id="nav-links">
-        <a href="#about" class="nav-link">About</a>
-        <a href="#skills" class="nav-link">Skills</a>
-        <a href="#projects" class="nav-link">Projects</a>
-        <a href="#contact" class="nav-link">Contact</a>
-      </nav>
-      <div class="nav-actions">
-        <button id="theme-toggle" class="theme-btn" aria-label="Toggle theme"><i class="fa-solid fa-moon"></i></button>
-        <button id="menu-btn" class="menu-btn" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
-      </div>
-    </div>
-  </header>
-
-  <main>
-    <section id="hero" class="hero section">
-      <div class="container hero-content">
-        <span class="badge">Available for opportunities</span>
-        <h1>Hi, I'm <span class="highlight">Roshan Paudel</span></h1>
-        <p class="tagline">Systems, Network & Cloud Specialist | Web Developer</p>
-        <p class="bio-summary">Specializing in cloud infrastructure, virtualization, enterprise systems, and full-stack development.</p>
-        <div class="cta-group">
-          <a href="#projects" class="btn btn-primary">View Projects</a>
-          <a href="#contact" class="btn btn-outline">Let's Talk</a>
+  <div class="resume-container">
+    
+    <!-- LEFT SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar-top">
+        <h1 class="sidebar-name">Roshan Paudel</h1>
+        <div class="profile-arch">
+          <!-- Replace profile.jpg with your photo file -->
+          <img src="https://via.placeholder.com/150" alt="Roshan Paudel" class="profile-img" />
         </div>
       </div>
-    </section>
 
-    <section id="about" class="section bg-alt">
-      <div class="container">
-        <h2 class="section-title">About Me</h2>
-        <div class="about-grid">
-          <div class="about-card">
-            <i class="fa-solid fa-server feature-icon"></i>
-            <h3>Systems & Networking</h3>
-            <p>Active Directory domain administration, Hyper-V virtualization, and Cisco network routing.</p>
-          </div>
-          <div class="about-card">
-            <i class="fa-solid fa-cloud feature-icon"></i>
-            <h3>Cloud & Infrastructure</h3>
-            <p>AWS VPC design, load balancing, CloudWatch monitoring, and automated security scanning.</p>
-          </div>
-          <div class="about-card">
-            <i class="fa-solid fa-code feature-icon"></i>
-            <h3>Web Development</h3>
-            <p>Building dynamic, responsive interfaces with clean DOM manipulation and API database workflows.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="skills" class="section">
-      <div class="container">
-        <h2 class="section-title">Technical Expertise</h2>
-        <div class="skills-grid" id="skills-container"></div>
-      </div>
-    </section>
-
-    <section id="projects" class="section bg-alt">
-      <div class="container">
-        <h2 class="section-title">Featured Projects</h2>
-        <div class="filter-controls">
-          <button class="filter-btn active" data-filter="all">All</button>
-          <button class="filter-btn" data-filter="cloud">Cloud & Infrastructure</button>
-          <button class="filter-btn" data-filter="web">Web Applications</button>
-          <button class="filter-btn" data-filter="systems">Systems & Scripts</button>
-        </div>
-        <div class="projects-grid" id="projects-container"></div>
-      </div>
-    </section>
-
-    <section id="contact" class="section">
-      <div class="container contact-container">
-        <h2 class="section-title">Get In Touch</h2>
-        <p class="contact-desc">Send me a message and it will be stored directly in my secure database.</p>
+      <div class="sidebar-content">
         
-        <form class="contact-form" id="contact-form">
-          <!-- Honeypot anti-spam field (hidden from real users) -->
-          <input type="text" id="honeypot" style="display:none" tabindex="-1" autocomplete="off" />
+        <!-- Contact Details -->
+        <section class="sidebar-section">
+          <h3>Contact Details</h3>
+          <div class="contact-item">
+            <i class="fa-solid fa-phone"></i>
+            <span>+977-9869892692</span>
+          </div>
+          <div class="contact-item">
+            <i class="fa-solid fa-envelope"></i>
+            <a href="mailto:roshanpoudel.rp.2004@gmail.com">roshanpoudel.rp.2004<br>@gmail.com</a>
+          </div>
+          <div class="contact-item">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>Chitwan, Nepal</span>
+          </div>
+        </section>
 
-          <div class="form-group">
-            <label for="name">Your Name</label>
-            <input type="text" id="name" required placeholder="Jane Doe" maxlength="100" />
-          </div>
-          <div class="form-group">
-            <label for="email">Your Email</label>
-            <input type="email" id="email" required placeholder="jane@example.com" maxlength="255" />
-          </div>
-          <div class="form-group">
-            <label for="message">Message</label>
-            <textarea id="message" rows="5" required placeholder="Write your message..." maxlength="2000"></textarea>
-          </div>
-          <button type="submit" id="submit-btn" class="btn btn-primary btn-block">Send Message</button>
-          <p id="form-status" class="form-status"></p>
-        </form>
+        <!-- Expertise -->
+        <section class="sidebar-section">
+          <h3>Expertise</h3>
+          <ul class="sidebar-list">
+            <li>Innovative</li>
+            <li>Problem solving</li>
+            <li>Strong decision maker</li>
+            <li>Communicating</li>
+            <li>Teamwork</li>
+            <li>Leadership</li>
+          </ul>
+        </section>
+
+        <!-- Languages -->
+        <section class="sidebar-section">
+          <h3>Languages</h3>
+          <ul class="sidebar-list">
+            <li>Nepali</li>
+            <li>Hindi</li>
+            <li>English</li>
+          </ul>
+        </section>
+
+        <!-- Interests -->
+        <section class="sidebar-section">
+          <h3>Interests</h3>
+          <ul class="sidebar-list">
+            <li>Writing</li>
+            <li>Reading</li>
+            <li>Photography</li>
+            <li>Travel</li>
+          </ul>
+        </section>
+
       </div>
-    </section>
-  </main>
+    </aside>
 
-  <footer class="footer">
-    <div class="container footer-content">
-      <p>&copy; <span id="year"></span> Roshan Paudel. All rights reserved.</p>
-      <div class="social-links">
-        <a href="https://github.com" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-        <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-        <a href="mailto:contact@paudel-roshan.com.np" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+    <!-- RIGHT MAIN CONTENT -->
+    <main class="main-content">
+      
+      <!-- Top Professional Summary -->
+      <div class="profile-summary-header">
+        Focused IT Assistant equipped with technical knowledge and experience to handle range of IT problems. Dependable in completing new installations, maintenance and repair work. Communicates easily with technical and non-technical personnel to deliver quality support. Highly skilled in creating effective lesson plans and using technology in the classroom. Skilled in developing student IT skills and introducing them to new technology.
       </div>
-    </div>
-  </footer>
 
-  <!-- Supabase Client SDK -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="app.js"></script>
+      <div class="sections-wrapper">
+        
+        <!-- Experience Section -->
+        <section>
+          <div class="section-banner banner-grey">Experience</div>
+
+          <div class="job-block">
+            <div class="job-title">IT Assistant</div>
+            <div class="job-company">Perfect Computer Institute</div>
+            <div class="job-location">Bharatpur, Chitwan, Nepal</div>
+            <div class="job-date">January, 2023 – June, 2023</div>
+            <ul class="job-bullets">
+              <li>Managing and storing data using computers, databases, networks, and servers.</li>
+              <li>Assist in software and hardware upgrades.</li>
+              <li>Report any repairs and maintenances to maintenance team.</li>
+              <li>Provide technical assistance to office staffs as needed.</li>
+              <li>Maintain standard filing system for easy and quick document assess and retrieval.</li>
+            </ul>
+          </div>
+
+          <div class="job-block">
+            <div class="job-title">Computer Teacher</div>
+            <div class="job-company">Sea Star Educational Consultancy Pvt.Ltd</div>
+            <div class="job-location">Bharatpur, Chitwan, Nepal</div>
+            <div class="job-date">January, 2023 – June, 2023</div>
+            <ul class="job-bullets">
+              <li>Evaluate students' strengths and weaknesses, and devise and implement individual learning plans</li>
+              <li>Promote the use of technology in the classroom</li>
+              <li>Design lessons that incorporate technologies as appropriate</li>
+              <li>Provide technical support to classrooms</li>
+              <li>Work with school administrators to maintain equipment and resources</li>
+              <li>Create instructional materials that incorporate new technologies</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Education Section -->
+        <section>
+          <div class="section-banner banner-navy">Education</div>
+
+          <ul class="edu-bullets">
+            <li>
+              <strong>10+2 in Science faculty</strong><br>
+              <span class="sub-detail">Skyrider College<br>Ratnanagar, 13 Chitwan, Nepal<br>Passout 2022</span>
+            </li>
+            <li>
+              <strong>Diploma in Computer</strong><br>
+              <span class="sub-detail">Sea Star Educational Consultancy Pvt.Ltd<br>Bharatpur, 10 Chitwan, Nepal<br>July, 2022 – January, 2023</span>
+            </li>
+            <li>
+              <strong>Diploma in Computer Application</strong><br>
+              <span class="sub-detail">Perfect Computer Institute<br>Bharatpur, Chitwan, Nepal<br>July, 2022 – January, 2023</span>
+            </li>
+          </ul>
+        </section>
+
+      </div>
+    </main>
+
+  </div>
+
 </body>
 </html>
