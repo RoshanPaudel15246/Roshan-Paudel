@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Resume | Roshan Paudel</title>
+  <title>Roshan Paudel | Portfolio</title>
+  
+  <!-- Fonts & Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -17,8 +19,10 @@
       --text-dark: #222222;
       --text-muted: #555555;
       --accent-orange: #d97706;
-      --bg-light: #e5e9ec;
-      --card-white: #ffffff;
+      --accent-blue: #0284c7;
+      --bg-page: #f8fafc;
+      --card-bg: #ffffff;
+      --border-light: #e2e8f0;
     }
 
     * {
@@ -28,22 +32,17 @@
       font-family: 'Roboto', Arial, sans-serif;
     }
 
-    body {
-      background-color: var(--bg-light);
-      display: flex;
-      justify-content: center;
-      padding: 2rem 1rem;
+    html, body {
+      min-height: 100vh;
+      background-color: var(--bg-page);
     }
 
-    /* Resume Container (A4 Proportions) */
-    .resume-container {
-      width: 100%;
-      max-width: 850px;
-      background: var(--card-white);
-      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+    /* Full-page Two-Column Container */
+    .page-wrapper {
       display: grid;
-      grid-template-columns: 35% 65%;
-      min-height: 1100px;
+      grid-template-columns: 320px 1fr;
+      min-height: 100vh;
+      width: 100vw;
     }
 
     /* ================= LEFT SIDEBAR ================= */
@@ -56,12 +55,12 @@
 
     .sidebar-top {
       background-color: var(--sidebar-header-bg);
-      padding: 2rem 1.25rem 0;
+      padding: 2.5rem 1.25rem 0;
       text-align: center;
     }
 
     .sidebar-name {
-      font-size: 1.45rem;
+      font-size: 1.5rem;
       font-weight: 700;
       letter-spacing: 1px;
       text-transform: uppercase;
@@ -92,14 +91,15 @@
     }
 
     .sidebar-content {
-      padding: 1.5rem 1.25rem;
+      padding: 2rem 1.5rem;
       display: flex;
       flex-direction: column;
-      gap: 1.5rem;
+      gap: 1.75rem;
+      flex-grow: 1;
     }
 
     .sidebar-section h3 {
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       font-weight: 600;
       margin-bottom: 0.75rem;
       padding-bottom: 0.35rem;
@@ -129,6 +129,10 @@
       text-decoration: none;
     }
 
+    .contact-item a:hover {
+      text-decoration: underline;
+    }
+
     .sidebar-list {
       list-style-type: disc;
       padding-left: 1.2rem;
@@ -136,134 +140,232 @@
       line-height: 1.6;
     }
 
-    /* ================= RIGHT CONTENT ================= */
+    /* ================= RIGHT MAIN CONTENT ================= */
+    .main-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 100vh;
+      background-color: var(--bg-page);
+    }
+
     .main-content {
-      background-color: #ffffff;
+      padding: 3rem;
+      max-width: 900px;
+      width: 100%;
+      margin: 0 auto;
       display: flex;
       flex-direction: column;
+      gap: 2.5rem;
     }
 
-    .profile-summary-header {
-      background-color: var(--navy-dark);
-      color: #ffffff;
-      padding: 1.75rem 1.75rem;
-      font-size: 0.82rem;
-      line-height: 1.5;
-      text-align: justify;
+    /* Short Intro Banner */
+    .bio-card {
+      background: var(--card-bg);
+      border-left: 4px solid var(--navy-dark);
+      padding: 1.5rem;
+      border-radius: 6px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
     }
 
-    .sections-wrapper {
-      padding: 1.75rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
+    .bio-card h2 {
+      font-size: 1.35rem;
+      color: var(--navy-dark);
+      margin-bottom: 0.5rem;
     }
 
-    .section-banner {
-      display: inline-block;
-      color: #ffffff;
-      font-size: 1rem;
-      font-weight: 700;
-      padding: 0.4rem 1.25rem;
-      border-radius: 2px;
-      clip-path: polygon(0 0, 92% 0, 100% 100%, 0 100%);
-      margin-bottom: 1.25rem;
-      text-transform: capitalize;
-    }
-
-    .banner-grey {
-      background-color: var(--sidebar-header-bg);
-      width: 140px;
-    }
-
-    .banner-navy {
-      background-color: var(--navy-dark);
-      width: 140px;
-    }
-
-    .job-block {
-      margin-bottom: 1.25rem;
-    }
-
-    .job-title {
+    .bio-card p {
       font-size: 0.95rem;
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    /* Section Headers */
+    .section-title {
+      font-size: 1.25rem;
       font-weight: 700;
-      color: var(--text-dark);
+      color: var(--navy-dark);
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
 
-    .job-company {
+    .section-title::after {
+      content: '';
+      flex-grow: 1;
+      height: 1px;
+      background: var(--border-light);
+    }
+
+    /* Education Cards */
+    .edu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .edu-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-light);
+      border-radius: 8px;
+      padding: 1.25rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+      position: relative;
+    }
+
+    .edu-card.featured {
+      border-color: var(--navy-dark);
+      background: #fdfdfd;
+    }
+
+    .edu-card h4 {
+      font-size: 1rem;
+      color: var(--navy-dark);
+      margin-bottom: 0.25rem;
+    }
+
+    .edu-card .institution {
       font-size: 0.85rem;
-      font-weight: 500;
-      color: var(--text-dark);
+      font-weight: 600;
+      color: var(--accent-orange);
+      margin-bottom: 0.25rem;
     }
 
-    .job-location, .job-date {
+    .edu-card .meta {
       font-size: 0.8rem;
       color: var(--text-muted);
-    }
-
-    .job-bullets {
-      margin-top: 0.5rem;
-      padding-left: 1.25rem;
-      font-size: 0.8rem;
-      line-height: 1.5;
-      color: var(--text-dark);
-    }
-
-    .edu-block {
-      margin-bottom: 1rem;
-    }
-
-    .edu-title {
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: var(--text-dark);
-    }
-
-    .edu-bullets {
-      list-style-type: disc;
-      padding-left: 1.2rem;
-    }
-
-    .edu-bullets li {
-      font-size: 0.8rem;
-      color: var(--text-dark);
       line-height: 1.4;
-      margin-bottom: 0.75rem;
     }
 
-    .edu-bullets .sub-detail {
-      color: var(--text-muted);
-      font-size: 0.75rem;
+    /* Contact Form Section */
+    .contact-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-light);
+      border-radius: 8px;
+      padding: 1.75rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.04);
     }
 
-    /* Print / Responsive Rules */
-    @media (max-width: 768px) {
-      .resume-container {
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 0.35rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.75rem;
+      border-radius: 6px;
+      border: 1px solid var(--border-light);
+      font-size: 0.9rem;
+      background: #fafafa;
+      color: var(--text-dark);
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: 2px solid var(--navy-dark);
+      background: #ffffff;
+    }
+
+    .btn-submit {
+      background: var(--navy-dark);
+      color: #ffffff;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      width: 100%;
+      transition: background 0.2s ease;
+    }
+
+    .btn-submit:hover {
+      background: var(--sidebar-navy);
+    }
+
+    .btn-submit:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .form-status {
+      text-align: center;
+      margin-top: 0.75rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--navy-dark);
+      color: #ffffff;
+      padding: 1.5rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.85rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.25rem;
+    }
+
+    .footer-links a {
+      color: #ffffff;
+      font-size: 1.2rem;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent-orange);
+    }
+
+    /* ================= RESPONSIVE DESIGN ================= */
+    @media (max-width: 900px) {
+      .page-wrapper {
         grid-template-columns: 1fr;
       }
-      .sidebar-top {
-        padding-top: 1.5rem;
+      .main-content {
+        padding: 1.5rem;
+      }
+      footer {
+        padding: 1.5rem;
+        flex-direction: column;
+        text-align: center;
       }
     }
   </style>
 </head>
 <body>
 
-  <div class="resume-container">
+  <div class="page-wrapper">
     
-    <!-- LEFT SIDEBAR -->
+    <!-- ================= LEFT SIDEBAR ================= -->
     <aside class="sidebar">
       <div class="sidebar-top">
         <h1 class="sidebar-name">Roshan Paudel</h1>
         <div class="profile-arch">
-          <!-- Replace profile.jpg with your photo file -->
+          <!-- Replace placeholder with your actual photo path -->
           <img src="https://via.placeholder.com/150" alt="Roshan Paudel" class="profile-img" />
         </div>
       </div>
 
       <div class="sidebar-content">
-        
         <!-- Contact Details -->
         <section class="sidebar-section">
           <h3>Contact Details</h3>
@@ -314,78 +416,163 @@
             <li>Travel</li>
           </ul>
         </section>
-
       </div>
     </aside>
 
-    <!-- RIGHT MAIN CONTENT -->
-    <main class="main-content">
+    <!-- ================= RIGHT MAIN CONTAINER ================= -->
+    <div class="main-container">
       
-      <!-- Top Professional Summary -->
-      <div class="profile-summary-header">
-        Focused IT Assistant equipped with technical knowledge and experience to handle range of IT problems. Dependable in completing new installations, maintenance and repair work. Communicates easily with technical and non-technical personnel to deliver quality support. Highly skilled in creating effective lesson plans and using technology in the classroom. Skilled in developing student IT skills and introducing them to new technology.
-      </div>
+      <main class="main-content">
+        <!-- Summary / Overview Paragraph -->
+        <div class="bio-card">
+          <h2>Professional Overview</h2>
+          <p>
+            Dedicated IT professional and technician experienced in administering network environments, enterprise systems, and managing technical support operations. Focused on deploying reliable hardware and cloud infrastructure, automating administrative routines, and designing interactive web applications.
+          </p>
+        </div>
 
-      <div class="sections-wrapper">
-        
-        <!-- Experience Section -->
+        <!-- Education Section (Including Sheridan College) -->
         <section>
-          <div class="section-banner banner-grey">Experience</div>
+          <h3 class="section-title"><i class="fa-solid fa-graduation-cap"></i> Education & Credentials</h3>
+          <div class="edu-grid">
+            
+            <div class="edu-card featured">
+              <h4>Computer Systems Technician</h4>
+              <div class="institution">Sheridan College</div>
+              <div class="meta">
+                Davis Campus, Brampton, ON<br>
+                Systems & Network Administration
+              </div>
+            </div>
 
-          <div class="job-block">
-            <div class="job-title">IT Assistant</div>
-            <div class="job-company">Perfect Computer Institute</div>
-            <div class="job-location">Bharatpur, Chitwan, Nepal</div>
-            <div class="job-date">January, 2023 – June, 2023</div>
-            <ul class="job-bullets">
-              <li>Managing and storing data using computers, databases, networks, and servers.</li>
-              <li>Assist in software and hardware upgrades.</li>
-              <li>Report any repairs and maintenances to maintenance team.</li>
-              <li>Provide technical assistance to office staffs as needed.</li>
-              <li>Maintain standard filing system for easy and quick document assess and retrieval.</li>
-            </ul>
-          </div>
+            <div class="edu-card">
+              <h4>10+2 Science Faculty</h4>
+              <div class="institution">Skyrider College</div>
+              <div class="meta">
+                Ratnanagar, 13 Chitwan, Nepal<br>
+                Graduated 2022
+              </div>
+            </div>
 
-          <div class="job-block">
-            <div class="job-title">Computer Teacher</div>
-            <div class="job-company">Sea Star Educational Consultancy Pvt.Ltd</div>
-            <div class="job-location">Bharatpur, Chitwan, Nepal</div>
-            <div class="job-date">January, 2023 – June, 2023</div>
-            <ul class="job-bullets">
-              <li>Evaluate students' strengths and weaknesses, and devise and implement individual learning plans</li>
-              <li>Promote the use of technology in the classroom</li>
-              <li>Design lessons that incorporate technologies as appropriate</li>
-              <li>Provide technical support to classrooms</li>
-              <li>Work with school administrators to maintain equipment and resources</li>
-              <li>Create instructional materials that incorporate new technologies</li>
-            </ul>
+            <div class="edu-card">
+              <h4>Diploma in Computer</h4>
+              <div class="institution">Sea Star Educational Consultancy</div>
+              <div class="meta">
+                Bharatpur, 10 Chitwan, Nepal<br>
+                July, 2022 – January, 2023
+              </div>
+            </div>
+
+            <div class="edu-card">
+              <h4>Diploma in Computer Application</h4>
+              <div class="institution">Perfect Computer Institute</div>
+              <div class="meta">
+                Bharatpur, Chitwan, Nepal<br>
+                July, 2022 – January, 2023
+              </div>
+            </div>
+
           </div>
         </section>
 
-        <!-- Education Section -->
+        <!-- Contact Form Section -->
         <section>
-          <div class="section-banner banner-navy">Education</div>
+          <h3 class="section-title"><i class="fa-solid fa-paper-plane"></i> Send a Message</h3>
+          <div class="contact-card">
+            <form id="contact-form">
+              <input type="text" id="honeypot" style="display:none" tabindex="-1" autocomplete="off" />
 
-          <ul class="edu-bullets">
-            <li>
-              <strong>10+2 in Science faculty</strong><br>
-              <span class="sub-detail">Skyrider College<br>Ratnanagar, 13 Chitwan, Nepal<br>Passout 2022</span>
-            </li>
-            <li>
-              <strong>Diploma in Computer</strong><br>
-              <span class="sub-detail">Sea Star Educational Consultancy Pvt.Ltd<br>Bharatpur, 10 Chitwan, Nepal<br>July, 2022 – January, 2023</span>
-            </li>
-            <li>
-              <strong>Diploma in Computer Application</strong><br>
-              <span class="sub-detail">Perfect Computer Institute<br>Bharatpur, Chitwan, Nepal<br>July, 2022 – January, 2023</span>
-            </li>
-          </ul>
+              <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" required placeholder="Enter your full name" maxlength="100" />
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" required placeholder="Enter your email address" maxlength="255" />
+              </div>
+              <div class="form-group">
+                <label for="message">Your Message</label>
+                <textarea id="message" rows="4" required placeholder="Type your message here..." maxlength="2000"></textarea>
+              </div>
+              <button type="submit" id="submit-btn" class="btn-submit">Submit Message</button>
+              <p id="form-status" class="form-status"></p>
+            </form>
+          </div>
         </section>
+      </main>
 
-      </div>
-    </main>
+      <!-- Footer Section -->
+      <footer>
+        <div>
+          &copy; <span id="year"></span> Roshan Paudel. All rights reserved.
+        </div>
+        <div class="footer-links">
+          <a href="https://github.com" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+          <a href="mailto:roshanpoudel.rp.2004@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+        </div>
+      </footer>
+
+    </div>
 
   </div>
 
+  <!-- Supabase JS Client -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    // 1. SUPABASE CREDENTIALS (PASTE YOUR VALUES HERE)
+    const SUPABASE_URL = "YOUR_SUPABASE_URL";
+    const SUPABASE_ANON_KEY = "YOUR_SUPABASE_ANON_KEY";
+
+    const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    // Dynamic Year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // 2. CONTACT FORM DATABASE SUBMISSION
+    const form = document.getElementById("contact-form");
+    const status = document.getElementById("form-status");
+    const submitBtn = document.getElementById("submit-btn");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      // Honeypot check
+      if (document.getElementById("honeypot").value) {
+        status.style.color = "#22c55e";
+        status.textContent = "Thank you! Your message has been sent.";
+        form.reset();
+        return;
+      }
+
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const message = document.getElementById("message").value.trim();
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Sending...";
+      status.style.color = "var(--text-muted)";
+      status.textContent = "Saving to database...";
+
+      try {
+        const { error } = await supabaseClient
+          .from("contact_messages")
+          .insert([{ name, email, message }]);
+
+        if (error) throw error;
+
+        status.style.color = "#22c55e";
+        status.textContent = "Thank you! Your message has been stored successfully.";
+        form.reset();
+      } catch (err) {
+        console.error("Submission error:", err.message);
+        status.style.color = "#dc2626";
+        status.textContent = "Failed to submit: " + err.message;
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Submit Message";
+      }
+    });
+  </script>
 </body>
 </html>
